@@ -10,12 +10,12 @@ export class ImagenPipe implements PipeTransform {
 
     let url = URL_SERVICIOS + '/img';
 
-    if ( imagen.indexOf('https') >= 0) {
-      return imagen;
-    }
-
     if (!imagen) {
       return url + '/usuarios/imagenPorDefecto';
+    }
+
+    if ( imagen.indexOf('https') >= 0) {
+      return imagen;
     }
 
     switch (tipo) {
