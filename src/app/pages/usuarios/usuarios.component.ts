@@ -29,7 +29,7 @@ export class UsuariosComponent implements OnInit {
     this.cargarUsuarios();
 
     this._modalUploadService.notificacion.subscribe( (resp: any) => {
-      console.log (resp);
+    //console.log (resp);
     this._usuarioService.guardarStorage( this._usuarioService.usuario._id, this._usuarioService.token, resp.resp.usuarioActualizado);
     this.cargarUsuarios();
     });
@@ -91,7 +91,7 @@ export class UsuariosComponent implements OnInit {
     }
 
     swal({
-      title: '¿Está segudo?',
+      title: '¿Está seguro?',
       text: 'Esta a punto de borrar a' + usuario.nombre,
       icon: 'warning',
       buttons: true,
@@ -99,14 +99,12 @@ export class UsuariosComponent implements OnInit {
     })
     .then((borrar ) => {
 
-     console.log( borrar  );
+     // console.log( borrar  );
 
      if (borrar) {
 
       this._usuarioService.borrarUsuario(usuario._id)
       .subscribe((borrado) => {
-
-        console.log(borrado);
         this.cargarUsuarios();
       });
 
