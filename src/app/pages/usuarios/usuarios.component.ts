@@ -30,7 +30,7 @@ export class UsuariosComponent implements OnInit {
 
     this._modalUploadService.notificacion.subscribe( (resp: any) => {
     //console.log (resp);
-    this._usuarioService.guardarStorage( this._usuarioService.usuario._id, this._usuarioService.token, resp.resp.usuarioActualizado);
+    this._usuarioService.guardarStorage( this._usuarioService.usuario._id, this._usuarioService.token, resp.resp.usuarioActualizado, this._usuarioService.menu);
     this.cargarUsuarios();
     });
   }

@@ -25,6 +25,8 @@ export class SidebarComponent implements OnInit {
         this.usuario = resp.resp.usuarioActualizado;
       }
     });
+
+    this._sidebar.cargarMenu();
   }
 
 }
