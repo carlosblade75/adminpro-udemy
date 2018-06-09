@@ -15,14 +15,15 @@ import { MedicosComponent } from './medicos/medicos.component';
 import { MedicoComponent } from './medicos/medico.component';
 import { BusquedaComponent } from './busqueda/busqueda.component';
 import { AdminGuard } from '../services/guards/admin.guard';
+import { VerificaTokenGuard } from '../services/guards/verifica-token.guard';
 
 const pagesRoutes: Routes = [
-    {
-        path: '',
-        component: PagesComponent,
-        canActivate: [ LoginGuardGuard ],
-        children: [
-            {path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+            {
+                path: 'dashboard',
+                component: DashboardComponent,
+                canActivate: [VerificaTokenGuard],
+                data: { titulo: 'Dashboard' }
+            },
             {path: 'progress', component: ProgressComponent, data: { titulo: 'ProgressBars' } },
             {path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas' } },
             {path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
@@ -33,17 +34,15 @@ const pagesRoutes: Routes = [
             {path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' } },
             // Mantenimientos
             {
-                path: 'usuarios', 
-                component: UsuariosComponent, 
+                path: 'usuarios',
+                component: UsuariosComponent,
                 canActivate: [AdminGuard],
-                data: { titulo: 'Mantenimiento de usuarios' } 
+                data: { titulo: 'Mantenimiento de usuarios' }
             },
             {path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenimiento de hospitales' } },
             {path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenimiento de médicos' } },
             {path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Médico' } },
             {path: '', redirectTo: '/dashboard', pathMatch: 'full' }
-        ]
-     }
 ];
 
 export const PAGES_ROUTES = RouterModule.forChild(pagesRoutes);

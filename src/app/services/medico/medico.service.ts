@@ -4,6 +4,8 @@ import { Medico } from '../../models/medico.model';
 import { URL_SERVICIOS } from '../../config/config';
 import { UsuarioService } from '../usuario/usuario.service';
 
+import swal from 'sweetalert';
+
 @Injectable()
 export class MedicoService {
 
